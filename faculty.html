@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Faculty Dashboard | CampusComp</title><link rel="stylesheet" href="style.css"></head><body>
+<nav class="navbar">
+  <a class="logo" href="index.html">CampusComp</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="register.html">Register</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="results.html">Results</a>
+    <a href="faculty.html">Faculty Dashboard</a>
+  </div>
+</nav>
+<main class="container"><h1 class="section-title">Faculty Dashboard</h1><p class="muted">Demo interface for managing competition details. No login or database is configured.</p>
+<section class="stats"><div class="stat-box"><p class="muted">Competitions in table</p><h2 id="eventCount">02</h2></div><div class="stat-box"><p class="muted">Participants</p><h2>120</h2></div><div class="stat-box"><p class="muted">Results Published</p><h2>04</h2></div></section>
+<section class="form-card" style="max-width:100%"><h2 class="section-title">Add Competition</h2><form id="competitionForm">
+<div class="form-group"><label for="eventName">Competition Name</label><input id="eventName" required></div>
+<div class="form-group"><label for="category">Category</label><select id="category" required><option value="">Select category</option><option>Technical</option><option>Programming</option><option>Cultural</option><option>Sports</option><option>Creative</option><option>Knowledge</option><option>Innovation</option></select></div>
+<div class="form-group"><label for="eventDate">Competition Date</label><input id="eventDate" type="date" required></div>
+<div class="form-group"><label for="venue">Venue</label><input id="venue" required></div>
+<div class="form-group"><label for="rules">Rules and Eligibility</label><textarea id="rules" required></textarea></div>
+<button class="btn" type="submit">Add Competition</button><p id="facultyMessage" class="notice" role="status" hidden></p></form></section>
+<h2 class="section-title" style="margin-top:28px">Competition List</h2><div class="table-wrap"><table><thead><tr><th>Competition</th><th>Category</th><th>Date</th><th>Venue</th></tr></thead><tbody id="competitionRows">
+<tr><td>Web Development Challenge</td><td>Technical</td><td>To be announced</td><td>Computer Lab</td></tr><tr><td>Coding Competition</td><td>Programming</td><td>To be announced</td><td>Computer Lab</td></tr>
+</tbody></table></div><p class="notice">Added entries appear only in this open page and are not saved permanently.</p>
+<a class="btn" href="competitions.html">View Competitions</a><a class="btn" href="results.html">View Results</a><a class="btn" href="index.html">Home</a></main>
+<footer class="footer"><p>CampusComp | Faculty Management</p></footer>
+<script>
+document.getElementById('competitionForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ const vals = [document.getElementById('eventName').value.trim(), document.getElementById('category').value, document.getElementById('eventDate').value, document.getElementById('venue').value.trim()];
+ const row = document.createElement('tr');
+ vals.forEach(v => { const cell = document.createElement('td'); cell.textContent = v; row.appendChild(cell); });
+ document.getElementById('competitionRows').appendChild(row);
+ const count = document.getElementById('eventCount'); count.textContent = String(Number(count.textContent) + 1).padStart(2,'0');
+ const msg = document.getElementById('facultyMessage'); msg.hidden = false; msg.textContent = 'Competition added to the visible demo table.';
+ this.reset();
+});
+</script></body></html>

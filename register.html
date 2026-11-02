@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Register | CampusComp</title><link rel="stylesheet" href="style.css"></head><body>
+<nav class="navbar">
+  <a class="logo" href="index.html">CampusComp</a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="competitions.html">Competitions</a>
+    <a href="register.html">Register</a>
+    <a href="achievements.html">Achievements</a>
+    <a href="results.html">Results</a>
+    <a href="faculty.html">Faculty Dashboard</a>
+  </div>
+</nav>
+<main class="container"><div class="form-card"><h1 class="section-title">Competition Registration</h1><p class="muted">Enter your details to register for an event.</p>
+<form id="registrationForm">
+<div class="form-group"><label for="studentName">Full Name</label><input id="studentName" name="studentName" required></div>
+<div class="form-group"><label for="rollNumber">Roll Number</label><input id="rollNumber" name="rollNumber" required></div>
+<div class="form-group"><label for="email">Email Address</label><input id="email" name="email" type="email" required></div>
+<div class="form-group"><label for="college">College Name</label><input id="college" name="college" required></div>
+<div class="form-group"><label for="course">Course</label><select id="course" name="course" required><option value="">Select course</option><option>BCA</option><option>BBA</option><option>B.Com</option><option>Other</option></select></div>
+<div class="form-group"><label for="competition">Select Competition</label><select id="competition" name="competition" required><option value="">Choose competition</option><option>Web Development Challenge</option><option>Coding Competition</option><option>Poster Design Contest</option><option>Cultural Talent Competition</option><option>Quiz Competition</option><option>Project Presentation</option></select></div>
+<button class="btn" type="submit">Submit Registration</button><p id="message" class="notice" role="status" hidden></p></form>
+<p style="margin-top:16px"><a href="competitions.html">Back to Competitions</a> | <a href="index.html">Home</a></p></div></main>
+<footer class="footer"><p>CampusComp | Student Registration</p></footer>
+<script>
+const select = document.getElementById('competition');
+const chosen = new URLSearchParams(window.location.search).get('competition');
+if (chosen) { for (const option of select.options) { if (option.text === chosen) select.value = option.value; } }
+document.getElementById('registrationForm').addEventListener('submit', function(e) {
+ e.preventDefault();
+ const msg = document.getElementById('message'); msg.hidden = false;
+ msg.textContent = 'Demo submitted successfully. This prototype does not save registration data.';
+ this.reset();
+});
+</script></body></html>
