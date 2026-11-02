@@ -1,0 +1,1 @@
+CampusComp complete starter. Follow SETUP.md carefully. Configure config.js with Supabase Project URL and anon/public key; run supabase_schema.sql in Supabase SQL Editor. Never expose service_role key.
